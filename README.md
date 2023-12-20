@@ -1,10 +1,10 @@
 # MacOS-Catalina-KVM-Preinstall
 
-Mac OS running on QEMU-KVM (Pre-install 35GB)
+Mac OS chạy trên KVM (cài sẵn 35GB)
 
--Note: It will use all available free ram and CPUs. The script is only for Ubuntu, Debian.
+-Note: cài trên github codespace giữ nguyên còn máy thật chỉnh dung lượng ram phù hợp.
 
--How it works: Pre-install QCOW2 (128 GB disk space), connect with VNC at port 5900 
+-Cách thức hoạt động: Cài sẵn QCOW2 (128 GB ổ cứng trống), kết nối với VNC qua ip ngrok (nếu cài máy thật kết nối với 127.0.0.1:5900) 
 
 ![image](https://user-images.githubusercontent.com/58414694/146778934-7585dc2c-561e-4b1a-9753-a3e39eaf90c6.png)
 
@@ -16,19 +16,19 @@ Mac OS running on QEMU-KVM (Pre-install 35GB)
 
 
 
-Download:
+Để tải xuống:
 ```console 
-curl -skLo MacOS-Catalina.sh https://bit.ly/3J7lyWk && chmod +x MacOS-Catalina.sh
+curl -skLo MacOS-Catalina.sh https://raw.githubusercontent.com/ubuntu2310fake/MacOS-Catalina-KVM-Preinstall/main/MacOS-Mojave.sh && chmod +x MacOS-Catalina.sh
 ```
 
-Usage: 
-- Download and install:
+Sử dụng: 
+- Cài đặt và sử dụng:
 ```console 
 bash MacOS-Catalina.sh 
 ```
-- Start MacOS VM in silent:
+- Chạy macos trong nền:
 
-(By default VM automatic starts after installation is done! Use this when your VM turn off and need to start again)
+(Theo mặc định macOS đã bật sẵn sau khi chạy lệnh đầu, sử dụng khi máy ảo đã tắt tránh tràn ram gây đơ máy)
 ```console 
 nohup ./silence.sh &>/dev/null &
 ```
