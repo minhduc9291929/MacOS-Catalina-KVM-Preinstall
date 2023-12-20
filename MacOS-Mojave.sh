@@ -16,7 +16,7 @@ cd macOS-Simple-KVM
 sudo python3  -m pip install click
 ./jumpstart.sh --catalina
 echo "Đang tải về Mac OS Catalina Disk..." 
-wget -q --show-progress --no-check-certificate -O /tmp/MyDisk.qcow2 https://tinyurl.com/3s87mjea
+sudo wget -q --show-progress --no-check-certificate -O /tmp/MyDisk.qcow2 https://tinyurl.com/3s87mjea
 cpus=$(lscpu | grep CPU\(s\) | head -1 | cut -f2 -d":" | awk '{$1=$1;print}')
 availableRAMcommand="free -m | tail -2 | head -1 | awk '{print \$7}'"
 availableRAM=$(echo $availableRAMcommand | bash)
