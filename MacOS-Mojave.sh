@@ -1,8 +1,8 @@
-echo "đang kiểm tra xem máy có bật vt chưa...."
+echo "dang kiem tra xem may co bat vt chua...."
 vtx=$(egrep -i '^flags.*(vmx|svm)' /proc/cpuinfo | wc -l)
-if [ $vtx = 0 ] ; then echo "[Lỗi] Máy tính của bạn chưa bật VT-x / AMD-v. bấm Ctrl+C để thoát và vào bios bật vt như trong hướng dẫn trên google"&& sleep 2711
+if [ $vtx = 0 ] ; then echo "[Loi] May tinh cua ban chua bat VT-x / AMD-v. bam Ctrl+C đe thoat va vao bios bat vt nhu trong hưong dan tren google"&& sleep 2711
 fi
-echo "đang cài đặt phần mềm"
+echo "dang cai dat phan mem"
 sudo apt update -y
 sudo apt install wget git qemu-system qemu-utils python3 python3-pip -y 
 git clone https://github.com/foxlet/macOS-Simple-KVM.git
@@ -15,17 +15,17 @@ sudo chmod 666 /dev/kvm
 cd macOS-Simple-KVM
 sudo python3  -m pip install click
 ./jumpstart.sh --catalina
-echo "Đang tải về Mac OS Catalina Disk..." 
+echo "Dang tai ve Mac OS Catalina Disk..." 
 sudo wget -q --show-progress --no-check-certificate -O /tmp/MyDisk.qcow2 https://tinyurl.com/3s87mjea
 cpus=$(lscpu | grep CPU\(s\) | head -1 | cut -f2 -d":" | awk '{$1=$1;print}')
 availableRAMcommand="free -m | tail -2 | head -1 | awk '{print \$7}'"
 availableRAM=$(echo $availableRAMcommand | bash)
-echo HEADLESS=1 MEM=10"G" CPUS=3 SYSTEM_DISK=/tmp/MyDisk.qcow2 ./headless.sh > silence.sh
+echo HEADLESS=1 MEM=12"G" CPUS=3 SYSTEM_DISK=/tmp/MyDisk.qcow2 ./headless.sh > silence.sh
 chmod +x silence.sh
 nohup ./silence.sh &>/dev/null &
-echo "tất cả sẵn sàng !!! Máy ảo macOS của bạn sẵn sàng hoạt động !!!"
-echo "Mở VNC Viewer và kết nối với ip theo hướng dẫn"
-echo "Cấu hình của bạn: 10GB Ram / 3core CPU
-echo "tên: Catalina-User"
-echo "mật khẩu: 123456"
-echo "ae vào trang này https://dashboard.ngrok.com/cloud-edge/endpoints để lấy ip vnc"
+echo "tat ca san sang !!! May ao macOS cua ban san sang hoat đong !!!"
+echo "Mo VNC Viewer va ket noi voi ip theo hưong dan"
+echo "Cau hình cua ban: 12GB Ram / 3core CPU
+echo "ten: Catalina-User"
+echo "mat khau: 123456"
+echo "ae vao trang nay https://dashboard.ngrok.com/cloud-edge/endpoints đe lay ip vnc"
